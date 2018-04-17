@@ -1,0 +1,31 @@
+<div class="container">
+  <p align="center" style="margin-top: 10px">
+    <mat-form-field>
+      <input matInput placeholder="First Name" [(ngModel)]="firstName" type="text" required>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <input matInput placeholder="Last Name" [(ngModel)]="lastName" required>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <input matInput placeholder="Email" type="email" [(ngModel)]="email" required>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <input matInput placeholder="Username" type="text" [(ngModel)]="username" required>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <input matInput placeholder="Password" [(ngModel)]="password" type="password" required>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <input matInput placeholder="Confirm Password" [(ngModel)]="confirmPassword" type="password" required>
+    </mat-form-field>
+    <br>
+    <mat-checkbox>I agree to Terms and Conditions</mat-checkbox>
+    <br>
+    <button mat-raised-button color="accent" style="margin-top: 10px">Register</button>
+  </p>
+</div>
