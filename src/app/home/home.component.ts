@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { LocalStorage } from '@ngx-pwa/local-storage';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+    appTitle = "PaymentsApp"
+    username:string;
+    constructor(private localStorage:LocalStorage, private router:Router) {
+        this.localStorage.getItem('user').subscribe(data => {
+            this.username = data['username'];
+        });
+     }
 
-  ngOnInit() {
-  }
+    ngOnInit() {}
+
+    signOut() {
+        this.localStorage.clear().subscribe(()=>{
+            this.router.navigate(['']);
+        });
+    }
 
 }

@@ -1,3 +1,25 @@
-<p>
-  home works!
-</p>
+<mat-toolbar role="header">
+    <!-- App Title -->
+    <span>{{appTitle}}</span>
+    
+    <!-- This fills the remaining space of the current row -->
+    <span class="example-fill-remaining-space"></span>
+
+    <a mat-button routerLink="balance"><strong>View Balance</strong></a>
+    <a mat-button routerLink="transactions"><strong>Transactions</strong></a>
+    <a mat-button routerLink="add"><strong>Add Money</strong></a>
+    <a mat-button routerLink="send"><strong>Send Money</strong></a>
+
+    <mat-menu #appMenu="matMenu">
+        <button mat-menu-item>Help</button>
+        <button mat-menu-item>Settings</button>
+        <button mat-menu-item (click)="signOut()">Log Out</button>
+    </mat-menu>
+
+    <button mat-button [matMenuTriggerFor]="appMenu" color="warn">
+        <strong>{{username}}</strong>
+    </button>
+</mat-toolbar>
+<div>
+    <router-outlet></router-outlet>
+</div>

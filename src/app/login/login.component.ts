@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
             }
             this.authService.login(authData).subscribe(loginResult => {
                 if (loginResult['success']==1) {
-                    this.onSuccessfullLogin(loginResult);
+                    this.onSuccessfulLogin(loginResult);
                 } else {
                     //show failure snackbar.
                     this.showSnackBar('Login Failure', null, 2000);
@@ -47,9 +47,8 @@ export class LoginComponent implements OnInit {
         });
     }
 
-    onSuccessfullLogin(loginResult) {
+    onSuccessfulLogin(loginResult) {
         //store the userdata in the local storage.
-        alert(JSON.stringify(loginResult));
         this.localStorage.setItem('user', loginResult).subscribe(() => {
             //successful storage
             this.route.navigate(['home']);

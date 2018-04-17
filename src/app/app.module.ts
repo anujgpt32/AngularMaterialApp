@@ -2,7 +2,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms'
-import { MatInputModule, MatCardModule, MatCheckboxModule, MatTabsModule, MatButtonModule, MatSnackBar, MatSnackBarModule } from '@angular/material'
+import { MatInputModule, MatCardModule, MatCheckboxModule, 
+        MatTabsModule, MatButtonModule, MatSnackBar, 
+        MatSnackBarModule, MatToolbarModule
+        , MatMenuModule, MatIconModule } from '@angular/material'
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { LocalStorageModule } from '@ngx-pwa/local-storage';
@@ -12,25 +15,43 @@ import { AuthComponent } from './auth/auth.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
+import { TransactionsComponent } from './transactions/transactions.component'
 import { AuthService } from './auth.service';
 import { TransactionService } from './transaction.service';
+import { BalanceComponent } from './balance/balance.component';
+import { AddComponent } from './add/add.component';
+import { SendComponent } from './send/send.component';
 
-let authRoutes:Routes = [
-
-];
-let homeChildRoutes:Routes = [
-
+let homeChildRoutes = [
+    {
+        path:'',
+        component: BalanceComponent
+    },
+    {
+        path:'balance',
+        component: BalanceComponent
+    },
+    {
+        path:'add',
+        component: AddComponent
+    },
+    {
+        path:'send',
+        component: SendComponent
+    },
+    {
+        path:'transactions',
+        component: TransactionsComponent
+    }
 ];
 let routes:Routes = [
     {
         path:'',
-        component:AuthComponent,
-        children:authRoutes
+        component:AuthComponent
     },
     {
         path:'auth',
-        component:AuthComponent,
-        children:authRoutes
+        component:AuthComponent
     },
     {
         path:'home',
@@ -45,7 +66,11 @@ let routes:Routes = [
         AuthComponent,
         HomeComponent,
         LoginComponent,
-        SignupComponent
+        SignupComponent,
+        BalanceComponent,
+        AddComponent,
+        TransactionsComponent,
+        SendComponent
     ],
     imports: [
         BrowserModule,
@@ -55,8 +80,11 @@ let routes:Routes = [
         MatCardModule,
         MatInputModule,
         MatTabsModule,
+        MatToolbarModule,
         MatButtonModule,
+        MatIconModule,
         MatSnackBarModule,
+        MatMenuModule,
         HttpClientModule,
         RouterModule.forRoot(routes),
         LocalStorageModule
