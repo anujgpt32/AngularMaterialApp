@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { LocalStorage } from '@ngx-pwa/local-storage'
+import { RouterModule, Router } from '@angular/router';
 
 @Component({
   selector: 'app-auth',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AuthComponent implements OnInit {
 
-  constructor() { }
+    constructor(private localStorage:LocalStorage, private router:Router) { }
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+        this.localStorage.getItem('user').subscribe((data) => {
+            if (data != null) {
+                this.router.navigate(['home']);
+            }
+        })
+    }
 
 }

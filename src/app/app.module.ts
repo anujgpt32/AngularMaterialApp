@@ -2,15 +2,18 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms'
-import { MatInputModule, MatCardModule, MatCheckboxModule, MatTabsModule, MatButtonModule } from '@angular/material'
+import { MatInputModule, MatCardModule, MatCheckboxModule, MatTabsModule, MatButtonModule, MatSnackBar, MatSnackBarModule } from '@angular/material'
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { LocalStorageModule } from '@ngx-pwa/local-storage';
  
 import { AppComponent } from './app.component';
 import { AuthComponent } from './auth/auth.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
+import { AuthService } from './auth.service';
+import { TransactionService } from './transaction.service';
 
 let authRoutes:Routes = [
 
@@ -53,9 +56,12 @@ let routes:Routes = [
         MatInputModule,
         MatTabsModule,
         MatButtonModule,
-        RouterModule.forRoot(routes)
+        MatSnackBarModule,
+        HttpClientModule,
+        RouterModule.forRoot(routes),
+        LocalStorageModule
     ],
-    providers: [],
+    providers: [HttpClient, AuthService, TransactionService, MatSnackBar],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
