@@ -7,23 +7,24 @@
     </mat-expansion-panel-header>
     <!-- All content starts here -->
     <!-- Table of transaction data. -->
-
-    <table matSort (matSortChange)="sortData($event)">
-      <tr>
-        <th mat-header="username">Username</th>
-        <th mat-sort-header="amount">Amount ($)</th>
-        <th mat-sort-header="timestamp">TimeStamp</th>
-        <th mat-header="description">Description</th>
-      </tr>
-
-      <tr *ngFor="let transaction of transactions;">
-        <td>{{transaction.to}}</td>
-        <td>{{transaction.amount}}</td>
-        <td>{{transaction.timestamp}}</td>
-        <td>{{transaction.description}}</td>
-      </tr>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>To</th>
+                <th>Amount ($)</th>
+                <th>TimeStamp</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let transaction of transactions">
+                <td>{{transaction.to}}</td>
+                <td>{{transaction.amount}}</td>
+                <td>{{transaction.timestamp| date: 'yyyy-MM-dd @ hh:mm:ss'}}</td>
+                <td>{{transaction.description}}</td>
+            </tr>
+        </tbody>
     </table>
-
     <!-- All content ends here -->
   </mat-expansion-panel>
 </mat-accordion>

@@ -1,16 +1,13 @@
 import { LocalStorage } from '@ngx-pwa/local-storage';
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
-import { TransactionService } from '../transaction.service';
-import { MatTableDataSource} from '@angular/material';
-import { MatPaginator } from '@angular/material'
-import { DataSource } from '@angular/cdk/collections';
+import { TransactionService } from './../transaction.service';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-all-transactions',
-  templateUrl: './all-transactions.component.html',
-  styleUrls: ['./all-transactions.component.css']
+  selector: 'app-debit-transactions',
+  templateUrl: './debit-transactions.component.html',
+  styleUrls: ['./debit-transactions.component.css']
 })
-export class AllTransactionsComponent implements OnInit, AfterViewInit {
+export class DebitTransactionsComponent implements OnInit {
 
     username:string;
     transactions:object;
@@ -32,7 +29,7 @@ export class AllTransactionsComponent implements OnInit, AfterViewInit {
         let data = {
             username:this.username
         }
-        this.transactionService.getAllTransactions(data).subscribe(transactions => {
+        this.transactionService.getDebitTransactions(data).subscribe(transactions => {
             if (transactions['success'] == 1) {
                 this.transactions = transactions['transactions'];
             }

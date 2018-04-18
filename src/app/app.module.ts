@@ -23,6 +23,8 @@ import { BalanceComponent } from './balance/balance.component';
 import { AddComponent } from './add/add.component';
 import { SendComponent } from './send/send.component';
 import { AllTransactionsComponent } from './all-transactions/all-transactions.component';
+import { DebitTransactionsComponent } from './debit-transactions/debit-transactions.component';
+import { CreditTransactionsComponent } from './credit-transactions/credit-transactions.component';
 
 let homeChildRoutes = [
     {
@@ -73,7 +75,9 @@ let routes:Routes = [
         AddComponent,
         TransactionsComponent,
         SendComponent,
-        AllTransactionsComponent
+        AllTransactionsComponent,
+        DebitTransactionsComponent,
+        CreditTransactionsComponent
     ],
     imports: [
         BrowserModule,
