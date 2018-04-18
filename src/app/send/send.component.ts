@@ -65,7 +65,7 @@ export class SendComponent implements OnInit {
             amount: Number(this.amount)
         }
         this.transactionService.sendMoney(moneyData).subscribe(transactionResult => {
-            // console.log(JSON.stringify(transactionResult));
+            console.log(JSON.stringify(transactionResult));
             if (transactionResult['success'] == 1) {
                 this.localStorage.getItem('user').subscribe(data => {
                     console.log(JSON.stringify(data));

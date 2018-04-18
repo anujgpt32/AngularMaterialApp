@@ -60,7 +60,7 @@ export class AddComponent implements OnInit {
             if (transactionResult['success'] == 1) {
                 this.localStorage.getItem('user').subscribe(data => {
                     console.log(JSON.stringify(data));
-                    data['balance'] += this.amount;
+                    data['balance'] = Number(data['balance'])+Number(this.amount);
                     this.localStorage.clear();
                     this.localStorage.setItem('user', data).subscribe(() => {
                         this.snackBar.open('Successful', 'DISMISS', {

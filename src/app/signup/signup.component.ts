@@ -46,9 +46,9 @@ export class SignupComponent implements OnInit {
                     'email':this.email
                 };
                 this.authService.signUp(authData).subscribe(registrationResult => {
-                    console.log(JSON.stringify(registrationResult));
+                    //console.log(JSON.stringify(registrationResult));
                     if (registrationResult['success'] == 1) {
-                        this.onRegistrationSuccess(registrationResult);
+                        //this.onRegistrationSuccess(registrationResult);
                         //show the "Head to Sign In Snackbar for ReAuthentication";
                         this.snackBar.open("Sign In Successful. Head to Sign In", null, {
                             duration:2000

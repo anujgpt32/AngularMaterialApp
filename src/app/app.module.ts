@@ -5,7 +5,8 @@ import { FormsModule } from '@angular/forms'
 import { MatInputModule, MatCardModule, MatCheckboxModule, 
         MatTabsModule, MatButtonModule, MatSnackBar, 
         MatSnackBarModule, MatToolbarModule
-        , MatMenuModule, MatIconModule } from '@angular/material'
+        , MatMenuModule, MatIconModule, MatSortModule, 
+        MatExpansionModule, MatPaginatorModule, MatTableModule } from '@angular/material'
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { LocalStorageModule } from '@ngx-pwa/local-storage';
@@ -21,6 +22,7 @@ import { TransactionService } from './transaction.service';
 import { BalanceComponent } from './balance/balance.component';
 import { AddComponent } from './add/add.component';
 import { SendComponent } from './send/send.component';
+import { AllTransactionsComponent } from './all-transactions/all-transactions.component';
 
 let homeChildRoutes = [
     {
@@ -70,7 +72,8 @@ let routes:Routes = [
         BalanceComponent,
         AddComponent,
         TransactionsComponent,
-        SendComponent
+        SendComponent,
+        AllTransactionsComponent
     ],
     imports: [
         BrowserModule,
@@ -87,7 +90,11 @@ let routes:Routes = [
         MatMenuModule,
         HttpClientModule,
         RouterModule.forRoot(routes),
-        LocalStorageModule
+        LocalStorageModule,
+        MatSortModule,
+        MatExpansionModule,
+        MatPaginatorModule,
+        MatTableModule
     ],
     providers: [HttpClient, AuthService, TransactionService, MatSnackBar],
     bootstrap: [AppComponent]

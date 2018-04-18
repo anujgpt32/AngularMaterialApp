@@ -18,4 +18,13 @@ export class TransactionService {
         let targetUrl = this.transactionBaseUrl+"/sendMoney";
         return this.httpClient.post(targetUrl, data);
     }
+
+    /**
+     * Fetches the data of the user.
+     * @param data holds only the username to get all data of the user.
+     */
+    getAllTransaction(data:any) {
+        let targetUrl = this.transactionBaseUrl+"/getAllTransactions";
+        return this.httpClient.post(targetUrl, data);
+    }
 }

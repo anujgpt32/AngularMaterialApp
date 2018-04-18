@@ -1,0 +1,29 @@
+<mat-accordion>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        All Transactions
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <!-- All content starts here -->
+    <!-- Table of transaction data. -->
+
+    <table matSort (matSortChange)="sortData($event)">
+      <tr>
+        <th mat-header="username">Username</th>
+        <th mat-sort-header="amount">Amount ($)</th>
+        <th mat-sort-header="timestamp">TimeStamp</th>
+        <th mat-header="description">Description</th>
+      </tr>
+
+      <tr *ngFor="let transaction of transactions;">
+        <td>{{transaction.to}}</td>
+        <td>{{transaction.amount}}</td>
+        <td>{{transaction.timestamp}}</td>
+        <td>{{transaction.description}}</td>
+      </tr>
+    </table>
+
+    <!-- All content ends here -->
+  </mat-expansion-panel>
+</mat-accordion>
