@@ -9,9 +9,9 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-    appTitle = "PaymentsApp"
-    username:string;
-    constructor(private localStorage:LocalStorage, private router:Router) {
+    appTitle = `PaymentsApp`;
+    username: string;
+    constructor(private localStorage: LocalStorage, private router: Router) {
         this.localStorage.getItem('user').subscribe(data => {
             this.username = data['username'];
         });
@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
     ngOnInit() {}
 
     signOut() {
-        this.localStorage.clear().subscribe(()=>{
+        this.localStorage.clear().subscribe(() => {
             this.router.navigate(['']);
         });
     }
