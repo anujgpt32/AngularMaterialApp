@@ -28,13 +28,15 @@ export class LoginComponent implements OnInit {
         if (validationResult) {
             let authData = {
                 'username':this.username,
-                'password':CryptoJS.SHA256(this.password).toString(CryptoJS.enc.Hex)
+                'password':CryptoJS.SHA256(this.password).toString(CryptoJS.enc.Hex),
+                'timestamp': Date.now()
             }
             this.authService.login(authData).subscribe(loginResult => {
                 if (loginResult['success']==1) {
                     this.onSuccessfulLogin(loginResult);
                 } else {
                     //show failure snackbar.
+                    console.log(JSON.stringify(loginResult));
                     this.showSnackBar('Login Failure', null, 2000);
                 }
             });
