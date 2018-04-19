@@ -59,4 +59,9 @@ export class AuthService {
         return this.httpClient.post(url, data);
     }
 
+    deleteAccount(data:any) {
+        let url = this.authBaseUrl+"/deleteUser";
+        return this.httpClient.post(url, data);
+    }
+
 }

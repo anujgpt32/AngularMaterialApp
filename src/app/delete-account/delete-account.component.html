@@ -1,0 +1,22 @@
+<mat-accordion>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Delete Account
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-form-field>
+            <input matInput placeholder="Username" 
+                [(ngModel)]="username" type="text" required>
+        </mat-form-field><br>
+        <mat-form-field>
+            <input matInput placeholder="Email" 
+                [(ngModel)]="email" type="email" required>
+        </mat-form-field><br>
+        <mat-form-field>
+            <input matInput placeholder="Password" 
+                [(ngModel)]="password" type="password" required>
+        </mat-form-field><br>
+        <button mat-raised-button color="accent" (click)="confirm()">Proceed</button>
+    </mat-expansion-panel>
+</mat-accordion>

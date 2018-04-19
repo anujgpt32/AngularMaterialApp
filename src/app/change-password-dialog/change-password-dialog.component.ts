@@ -38,7 +38,6 @@ export class ChangePasswordDialogComponent implements OnInit {
                         'oldPassword':CryptoJS.SHA256(this.password).toString(CryptoJS.enc.Hex)
                     };
                     this.authService.changePasswordFromConsole(newData).subscribe(changeResult => {
-                        console.log(JSON.stringify(changeResult));
                         if (changeResult['success'] == 1) {
                             //password succesfully changed
                             this.localStorage.clear().subscribe(() => {

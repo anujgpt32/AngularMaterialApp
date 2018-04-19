@@ -33,6 +33,8 @@ import { SettingsComponent } from './settings/settings.component';
 import { AccountInfoComponent } from './account-info/account-info.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { ChangePasswordDialogComponent } from './change-password-dialog/change-password-dialog.component';
+import { DeleteAccountComponent } from './delete-account/delete-account.component';
+import { DeleteAccountDialogComponent } from './delete-account-dialog/delete-account-dialog.component';
 
 let homeChildRoutes = [
     {
@@ -108,7 +110,9 @@ let routes:Routes = [
         SettingsComponent,
         AccountInfoComponent,
         ChangePasswordComponent,
-        ChangePasswordDialogComponent
+        ChangePasswordDialogComponent,
+        DeleteAccountComponent,
+        DeleteAccountDialogComponent
     ],
     imports: [
         BrowserModule,
@@ -135,7 +139,7 @@ let routes:Routes = [
         MatDialogModule
     ],
     entryComponents:[
-        ChangePasswordDialogComponent
+        ChangePasswordDialogComponent, DeleteAccountDialogComponent
     ],
     providers: [HttpClient, AuthService, TransactionService, MatSnackBar],
     bootstrap: [AppComponent]
