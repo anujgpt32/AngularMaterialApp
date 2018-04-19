@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { LocalStorage } from '@ngx-pwa/local-storage';
 import { Router } from '@angular/router';
@@ -11,9 +12,12 @@ export class HomeComponent implements OnInit {
 
     appTitle = `PaymentsApp`;
     username: string;
-    constructor(private localStorage: LocalStorage, private router: Router) {
+    constructor(private localStorage: LocalStorage, private router: Router, private location:Location) {
         this.localStorage.getItem('user').subscribe(data => {
-            this.username = data['username'];
+            if (data != null)
+                this.username = data['username'];
+            else
+                this.location.back();
         });
      }
 
@@ -23,6 +27,10 @@ export class HomeComponent implements OnInit {
         this.localStorage.clear().subscribe(() => {
             this.router.navigate(['']);
         });
+    }
+
+    settings() {
+        this.router.navigate(['settings']);
     }
 
 }

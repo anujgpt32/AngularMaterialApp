@@ -46,7 +46,7 @@ export class SendComponent implements OnInit {
             username:this.from,
             password:CryptoJS.SHA256(this.password).toString(CryptoJS.enc.Hex)
         }
-        this.authService.login(authData).subscribe(authResult => {
+        this.authService.authenticateUser(authData).subscribe(authResult => {
             if (authResult['success'] == 1) {
                 this.sendMoney();
             } else {

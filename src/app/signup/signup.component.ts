@@ -3,6 +3,7 @@ import { AuthService } from '../auth.service';
 import * as CryptoJS from 'crypto-js';
 import * as EmailValidator from 'email-validator';
 import { MatSnackBar } from '@angular/material';
+import { Form, NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-signup',
@@ -53,6 +54,12 @@ export class SignupComponent implements OnInit {
                         this.snackBar.open("Sign In Successful. Head to Sign In", null, {
                             duration:2000
                         });
+                        this.firstName="";
+                        this.lastName = "";
+                        this.username = "";
+                        this.password = "";
+                        this.email="";
+                        this.confirmPassword="";
                     } else {
                         //show snackbar for failed operation with suitable error.
                         //alert(registrationResult['message'])

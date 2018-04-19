@@ -2,11 +2,15 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms'
+
 import { MatInputModule, MatCardModule, MatCheckboxModule, 
         MatTabsModule, MatButtonModule, MatSnackBar, 
         MatSnackBarModule, MatToolbarModule
-        , MatMenuModule, MatIconModule, MatSortModule, 
-        MatExpansionModule, MatPaginatorModule, MatTableModule } from '@angular/material'
+        , MatMenuModule, MatSortModule, 
+        MatExpansionModule, MatPaginatorModule, 
+        MatTableModule, MatSidenavModule, MatListModule,
+        MatIconModule, MatDialogModule } from '@angular/material'
+        
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { LocalStorageModule } from '@ngx-pwa/local-storage';
@@ -25,6 +29,10 @@ import { SendComponent } from './send/send.component';
 import { AllTransactionsComponent } from './all-transactions/all-transactions.component';
 import { DebitTransactionsComponent } from './debit-transactions/debit-transactions.component';
 import { CreditTransactionsComponent } from './credit-transactions/credit-transactions.component';
+import { SettingsComponent } from './settings/settings.component';
+import { AccountInfoComponent } from './account-info/account-info.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
+import { ChangePasswordDialogComponent } from './change-password-dialog/change-password-dialog.component';
 
 let homeChildRoutes = [
     {
@@ -48,6 +56,20 @@ let homeChildRoutes = [
         component: TransactionsComponent
     }
 ];
+let settingsChildRoute = [
+    {
+        path:'',
+        component: AccountInfoComponent
+    },
+    {
+        path: 'accountInfo',
+        component: AccountInfoComponent
+    },
+    {
+        path: 'changePassword',
+        component: ChangePasswordComponent
+    }
+];
 let routes:Routes = [
     {
         path:'',
@@ -61,6 +83,11 @@ let routes:Routes = [
         path:'home',
         component:HomeComponent,
         children:homeChildRoutes
+    },
+    {
+        path:'settings',
+        component: SettingsComponent,
+        children:settingsChildRoute
     }
 ];
 
@@ -77,7 +104,11 @@ let routes:Routes = [
         SendComponent,
         AllTransactionsComponent,
         DebitTransactionsComponent,
-        CreditTransactionsComponent
+        CreditTransactionsComponent,
+        SettingsComponent,
+        AccountInfoComponent,
+        ChangePasswordComponent,
+        ChangePasswordDialogComponent
     ],
     imports: [
         BrowserModule,
@@ -89,7 +120,6 @@ let routes:Routes = [
         MatTabsModule,
         MatToolbarModule,
         MatButtonModule,
-        MatIconModule,
         MatSnackBarModule,
         MatMenuModule,
         HttpClientModule,
@@ -98,7 +128,14 @@ let routes:Routes = [
         MatSortModule,
         MatExpansionModule,
         MatPaginatorModule,
-        MatTableModule
+        MatTableModule,
+        MatSidenavModule,
+        MatListModule,
+        MatIconModule,
+        MatDialogModule
+    ],
+    entryComponents:[
+        ChangePasswordDialogComponent
     ],
     providers: [HttpClient, AuthService, TransactionService, MatSnackBar],
     bootstrap: [AppComponent]

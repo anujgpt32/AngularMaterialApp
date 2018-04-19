@@ -1,4 +1,4 @@
-<mat-toolbar role="header">
+<mat-toolbar role="header" class="mat-elevation-z1">
     <!-- App Title -->
     <span>{{appTitle}}</span>
     
@@ -8,16 +8,15 @@
     <a mat-button routerLink="balance"><strong>View Balance</strong></a>
     <a mat-button routerLink="transactions"><strong>Transactions</strong></a>
     <a mat-button routerLink="add"><strong>Add Money</strong></a>
-    <a mat-button routerLink="send"><strong>Send Money</strong></a>
+    <a mat-button routerLink="send"><strong>Pay</strong></a>
 
     <mat-menu #appMenu="matMenu">
-        <button mat-menu-item>Help</button>
-        <button mat-menu-item>Settings</button>
+        <button mat-menu-item (click)="settings()">Settings</button>
         <button mat-menu-item (click)="signOut()">Log Out</button>
     </mat-menu>
 
     <button mat-button [matMenuTriggerFor]="appMenu" color="warn">
-        <strong>{{username}}</strong>
+        <strong>@{{username}}</strong>
     </button>
 </mat-toolbar>
 <div>

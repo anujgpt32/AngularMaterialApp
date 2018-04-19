@@ -14,7 +14,8 @@ export class AuthService {
      * @param data : contains the user
      */
     signUp(data:any) {
-        let url = this.authBaseUrl+"/signup"
+        let url = this.authBaseUrl+"/signup";
+        data['timestamp'] = Date.now();
         return this.httpClient.post(url, data);
     }
 
@@ -24,7 +25,9 @@ export class AuthService {
      * @param data holds the request body.
      */
     login(data:any) {
-        let url = this.authBaseUrl+"/login"
+        let url = this.authBaseUrl+"/login";
+        //timestamp of login is stored in the database for the record.
+        data['timestamp'] = Date.now();
         return this.httpClient.post(url, data);
     }
 
@@ -34,6 +37,25 @@ export class AuthService {
      */
     getUserData(data:any) {
         let url = this.authBaseUrl+"/getUserDetails";
+        return this.httpClient.post(url, data);
+    }
+
+    /**
+     * This method is to be called after local data
+     * validation and before starting the transaction.
+     * @param data : holds username and password of the user.
+     */
+    authenticateUser(data:any) {
+        let url = this.authBaseUrl+"/authenticateUser";
+        return this.httpClient.post(url, data);
+    }
+
+    /**
+     * changes the password from settings
+     * @param data holds the username, oldpassword, newpassword.
+     */
+    changePasswordFromConsole(data:any) {
+        let url = this.authBaseUrl+"/changePasswordFromConsole";
         return this.httpClient.post(url, data);
     }
 

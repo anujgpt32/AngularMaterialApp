@@ -51,6 +51,8 @@ export class LoginComponent implements OnInit {
         //store the userdata in the local storage.
         this.localStorage.setItem('user', loginResult).subscribe(() => {
             //successful storage
+            this.username = "";
+            this.password = "";
             this.route.navigate(['home']);
         }, () => {
             //error.

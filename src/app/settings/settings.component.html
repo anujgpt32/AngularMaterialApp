@@ -1,0 +1,11 @@
+<mat-toolbar role="header">
+    <!-- App Title = 'Settings' -->
+    <span>{{title}}</span>
+    <span class="example-fill-remaining-space"></span>
+    <button mat-icon-button (click)="goHome()"><mat-icon>home</mat-icon></button>
+</mat-toolbar>
+<div class="container" style="padding: 1%; width: 60%">
+    <app-account-info></app-account-info>
+    <app-change-password></app-change-password>
+    <button mat-button (click)="signOut()" style="margin-top: 10px;">SIGN OUT</button>
+</div>

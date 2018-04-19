@@ -1,0 +1,28 @@
+mat-drawer-container {
+    position: fixed;
+    height: 100%;
+    min-height: 100%;
+    width: 100%;
+    min-width: 100%;
+}
+
+a {
+    text-decoration: none;
+    color: black
+}
+
+.menu-button {
+    width: 100%;
+    text-align: left;
+}
+
+mat-card {
+    margin: 1%;
+    width: 70%
+}
+
+.example-fill-remaining-space {
+    /* This fills the remaining space, by using flexbox. 
+            Every toolbar row uses a flexbox row layout. */
+    flex: 1 1 auto;
+}
