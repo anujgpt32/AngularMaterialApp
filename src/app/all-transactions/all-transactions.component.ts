@@ -13,7 +13,7 @@ import { DataSource } from '@angular/cdk/collections';
 export class AllTransactionsComponent implements OnInit, AfterViewInit {
 
     username:string;
-    transactions:object;
+    transactions = [];
 
     constructor(private transactionService: TransactionService,
         private localStorage: LocalStorage) {
@@ -35,8 +35,21 @@ export class AllTransactionsComponent implements OnInit, AfterViewInit {
         this.transactionService.getAllTransactions(data).subscribe(transactions => {
             if (transactions['success'] == 1) {
                 this.transactions = transactions['transactions'];
+                this.changeValues();
             }
         });
+    }
+
+    changeValues() {
+        for (let transaction of this.transactions) {
+            console.log(transaction);
+            if (transaction['from']==this.username) {
+                transaction['from'] = 'You'
+            }
+            if (transaction['to']==this.username) {
+                transaction['to'] = 'You'
+            }
+        }
     }
 
 }

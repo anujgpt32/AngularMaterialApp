@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import * as CryptoJS from 'crypto-js';
 import { AuthService } from '../auth.service';
 import { MatSnackBar } from '@angular/material';
 import { LocalStorage } from '@ngx-pwa/local-storage';
 import { Router } from '@angular/router';
+import Utility from './../utilities/utility';
 
 
 @Component({
@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
         if (validationResult) {
             let authData = {
                 'username':this.username,
-                'password':CryptoJS.SHA256(this.password).toString(CryptoJS.enc.Hex),
+                'password':Utility.passwordToSHA256(this.password),
                 'timestamp': Date.now()
             }
             this.authService.login(authData).subscribe(loginResult => {
@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
                     this.onSuccessfulLogin(loginResult);
                 } else {
                     //show failure snackbar.
-                    console.log(JSON.stringify(loginResult));
+                    //console.log(JSON.stringify(loginResult));
                     this.showSnackBar('Login Failure', null, 2000);
                 }
             });
@@ -69,7 +69,7 @@ export class LoginComponent implements OnInit {
             isValid = false;
             messages.push('Invalid Username');
         }
-        if (this.password == null || this.password.length<7) {
+        if (this.password == null || this.password.length<8) {
             isValid = false;
             messages.push('Invalid Password');
         }

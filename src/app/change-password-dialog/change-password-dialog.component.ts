@@ -1,8 +1,8 @@
 import { Router } from '@angular/router';
 import { LocalStorage } from '@ngx-pwa/local-storage';
 import { AuthService } from './../auth.service';
-import * as CryptoJS from 'crypto-js';
 import { Component, OnInit, Inject } from '@angular/core';
+import Utility from './../utilities/utility'
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatSnackBar } from "@angular/material";
 
 @Component({
@@ -28,14 +28,14 @@ export class ChangePasswordDialogComponent implements OnInit {
         if (isValid) {
             let authData = {
                 username:this.username,
-                password:CryptoJS.SHA256(this.password).toString(CryptoJS.enc.Hex)
+                password:Utility.passwordToSHA256(this.password)
             }
             this.authService.authenticateUser(authData).subscribe(authResult => {
                 if (authResult['success'] == 1) {
                     let newData = {
                         'username':this.username,
                         'newPassword':this.newPassword,
-                        'oldPassword':CryptoJS.SHA256(this.password).toString(CryptoJS.enc.Hex)
+                        'oldPassword':Utility.passwordToSHA256(this.password)
                     };
                     this.authService.changePasswordFromConsole(newData).subscribe(changeResult => {
                         if (changeResult['success'] == 1) {

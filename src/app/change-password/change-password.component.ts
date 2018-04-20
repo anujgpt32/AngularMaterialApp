@@ -1,4 +1,5 @@
-import * as CryptoJS from 'crypto-js';
+// import * as CryptoJS from 'crypto-js';
+import Utility from './../utilities/utility'
 import { ChangePasswordDialogComponent } from './../change-password-dialog/change-password-dialog.component';
 import { MatSnackBar, MatDialog } from '@angular/material';
 import { Component, OnInit } from '@angular/core';
@@ -25,7 +26,7 @@ export class ChangePasswordComponent implements OnInit {
             //show the dialog for getting the username and old password.
             let dialogRef = this.dialog.open(ChangePasswordDialogComponent, {
                 width: '450px',
-                data: CryptoJS.SHA256(this.newPassword).toString(CryptoJS.enc.Hex)
+                data: Utility.passwordToSHA256(this.newPassword)
             });
         }
     }

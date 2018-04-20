@@ -3,8 +3,9 @@ import { Router } from '@angular/router';
 import { AuthService } from './../auth.service';
 import { MatSnackBar, MatDialog } from '@angular/material';
 import { Component, OnInit } from '@angular/core';
-import * as EmailValidator from 'email-validator';
-import * as CryptoJS from 'crypto-js';
+// import * as EmailValidator from 'email-validator';
+// import * as CryptoJS from 'crypto-js';
+import Utility from './../utilities/utility'
 import { DeleteAccountDialogComponent } from '../delete-account-dialog/delete-account-dialog.component';
 
 @Component({
@@ -32,7 +33,7 @@ export class DeleteAccountComponent implements OnInit {
         if (isValid) {
             let data = {
                 username:this.username,
-                password:CryptoJS.SHA256(this.password).toString(CryptoJS.enc.Hex)
+                password:Utility.passwordToSHA256(this.password)
             };
             this.authService.authenticateUser(data).subscribe(authResult => {
                 if (authResult['success'] == 1) {
@@ -54,19 +55,19 @@ export class DeleteAccountComponent implements OnInit {
                                     })
                                 } else {
                                     this.snackBar.open('Operation Failed', null, {
-                                        duration:2000
+                                        duration:1500
                                     })
                                 }
                             });
                         } else if (dialogResult == 'cancel') {
-                            this.snackBar.open('Opertaion Cancelled', null, {
-                                duration:1900
+                            this.snackBar.open('Operation Cancelled', null, {
+                                duration:1500
                             });
                         }
                     });
                 } else {
                     this.snackBar.open('Authentication Failure', null, {
-                        duration:2000
+                        duration:1500
                     });
                 }
             });
@@ -88,7 +89,7 @@ export class DeleteAccountComponent implements OnInit {
             isValid = false;
             messages.push('Empty email field');
         }
-        else if (!EmailValidator.validate(this.email)) {
+        else if (!Utility.validateEmail(this.email)) {
             isValid = false;
             messages.push('Invalid email');
         }

@@ -11,7 +11,7 @@ export class BalanceComponent implements OnInit {
 
     private userData: any;
 
-    private balance: number;
+    balance: number;
 
     constructor(private localStorage: LocalStorage) {
         localStorage.getItem('user').subscribe(data => {

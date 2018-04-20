@@ -3,7 +3,8 @@ import { TransactionService } from './../transaction.service';
 import { AuthService } from './../auth.service';
 import { LocalStorage } from '@ngx-pwa/local-storage';
 import { Component, OnInit } from '@angular/core';
-import * as CryptoJS from 'crypto-js';
+// import * as CryptoJS from 'crypto-js';
+import Utility from './../utilities/utility'
 
 @Component({
   selector: 'app-send',
@@ -44,7 +45,7 @@ export class SendComponent implements OnInit {
     authAndSendData() {
         let authData = {
             username:this.from,
-            password:CryptoJS.SHA256(this.password).toString(CryptoJS.enc.Hex)
+            password:Utility.passwordToSHA256(this.password)
         }
         this.authService.authenticateUser(authData).subscribe(authResult => {
             if (authResult['success'] == 1) {

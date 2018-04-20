@@ -10,6 +10,7 @@ import { RouterModule, Router } from '@angular/router';
 export class AuthComponent implements OnInit {
 
     constructor(private localStorage:LocalStorage, private router:Router) { }
+    index = 0;
 
     ngOnInit() {
         this.localStorage.getItem('user').subscribe((data) => {
@@ -18,5 +19,9 @@ export class AuthComponent implements OnInit {
             }
         })
     }
+
+    public handleEvent(childData:any){
+        this.index = 0;
+	}
 
 }

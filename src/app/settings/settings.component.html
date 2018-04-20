@@ -2,7 +2,10 @@
     <!-- App Title = 'Settings' -->
     <span>{{title}}</span>
     <span class="example-fill-remaining-space"></span>
-    <button mat-icon-button (click)="goHome()"><mat-icon>home</mat-icon></button>
+    <!-- <button mat-icon-button (click)="goHome()"><mat-icon>home</mat-icon></button> -->
+    <button mat-mini-fab (click)="goHome()" color="white">
+        <mat-icon>home</mat-icon>
+    </button>
 </mat-toolbar>
 <div class="container" style="padding: 1%; width: 60%">
     <app-account-info></app-account-info>

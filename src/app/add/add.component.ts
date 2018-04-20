@@ -3,7 +3,8 @@ import { LocalStorage } from '@ngx-pwa/local-storage';
 import { AuthService } from './../auth.service';
 import { Component, OnInit } from '@angular/core';
 import { TransactionService } from '../transaction.service';
-import * as CryptoJS from 'crypto-js';
+import Utitlity from '../utilities/utility';
+// import * as CryptoJS from 'crypto-js';
 
 @Component({
   selector: 'app-add',
@@ -39,7 +40,7 @@ export class AddComponent implements OnInit {
     authAndSaveData() {
         let authData = {
             username:this.username,
-            password:CryptoJS.SHA256(this.password).toString(CryptoJS.enc.Hex)
+            password:Utitlity.passwordToSHA256(this.password)
         }
         this.authService.authenticateUser(authData).subscribe(authResult => {
             if (authResult['success'] == 1) {

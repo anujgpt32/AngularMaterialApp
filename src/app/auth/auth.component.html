@@ -1,10 +1,10 @@
 <mat-card>
-  <mat-tab-group>
-    <mat-tab label="Login">
+  <mat-tab-group [(selectedIndex)]="index">
+    <mat-tab label="Login" index="0">
       <app-login></app-login>
     </mat-tab>
-    <mat-tab label="Register">
-      <app-signup></app-signup>
+    <mat-tab label="Register" index="1">
+      <app-signup (outgoingData)="handleEvent($event)"></app-signup>
     </mat-tab>
   </mat-tab-group>
 </mat-card>

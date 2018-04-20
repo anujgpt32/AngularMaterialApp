@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import Utility from './../utilities/utility';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { AuthService } from '../auth.service';
-import * as CryptoJS from 'crypto-js';
-import * as EmailValidator from 'email-validator';
 import { MatSnackBar } from '@angular/material';
 import { Form, NgForm } from '@angular/forms';
 
@@ -19,6 +18,7 @@ export class SignupComponent implements OnInit {
     lastName:string;
     email:string;
     agreed:string;
+    @Output() outgoingData = new EventEmitter();
 
     constructor(private authService:AuthService, public snackBar:MatSnackBar) { }
 
@@ -43,7 +43,7 @@ export class SignupComponent implements OnInit {
                     'firstName':this.firstName,
                     'lastName':this.lastName,
                     'username':this.username,
-                    'password':CryptoJS.SHA256(this.password).toString(CryptoJS.enc.Hex),
+                    'password':Utility.passwordToSHA256(this.password),
                     'email':this.email
                 };
                 this.authService.signUp(authData).subscribe(registrationResult => {
@@ -51,15 +51,12 @@ export class SignupComponent implements OnInit {
                     if (registrationResult['success'] == 1) {
                         //this.onRegistrationSuccess(registrationResult);
                         //show the "Head to Sign In Snackbar for ReAuthentication";
-                        this.snackBar.open("Sign In Successful. Head to Sign In", null, {
+                        this.snackBar.open("Sign In Successful.", null, {
                             duration:2000
                         });
-                        this.firstName="";
-                        this.lastName = "";
-                        this.username = "";
-                        this.password = "";
-                        this.email="";
-                        this.confirmPassword="";
+                        //move to index 0 of the tabs.
+                        //i.e. move to sign in for re authentication.
+                        this.outgoingData.emit(0);
                     } else {
                         //show snackbar for failed operation with suitable error.
                         //alert(registrationResult['message'])
@@ -121,7 +118,7 @@ export class SignupComponent implements OnInit {
             isValid = false;
             result.push('Empty email field');
         }
-        else if (!EmailValidator.validate(this.email)) {
+        else if (!Utility.validateEmail(this.email)) {
             isValid = false;
             result.push('Invalid email');
         }

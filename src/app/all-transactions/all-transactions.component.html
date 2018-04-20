@@ -7,12 +7,12 @@
     </mat-expansion-panel-header>
     <!-- All content starts here -->
     <!-- Table of transaction data. -->
-    <table class="table table-hover">
+    <table class="table table-hover" *ngIf="transactions.length > 0">
         <thead>
             <tr>
                 <th>From</th>
                 <th>To</th>
-                <th>Amount ($)</th>
+                <th>Amount</th>
                 <th>TimeStamp</th>
                 <th>Description</th>
             </tr>
@@ -21,7 +21,7 @@
             <tr *ngFor="let transaction of transactions">
                 <td>{{transaction.from}}</td>
                 <td>{{transaction.to}}</td>
-                <td>{{transaction.amount}}</td>
+                <td>${{transaction.amount}}</td>
                 <td>{{transaction.timestamp| date: 'yyyy-MM-dd @ hh:mm:ss'}}</td>
                 <td>{{transaction.description}}</td>
             </tr>

@@ -10,7 +10,8 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 export class CreditTransactionsComponent implements OnInit, AfterViewInit {
 
     username:string;
-    transactions:object;
+    transactions = [];
+    totalCreditAmount = 0.0;
 
     constructor(private transactionService: TransactionService,
         private localStorage: LocalStorage) {
@@ -32,8 +33,15 @@ export class CreditTransactionsComponent implements OnInit, AfterViewInit {
         this.transactionService.getCreditTransactions(data).subscribe(transactions => {
             if (transactions['success'] == 1) {
                 this.transactions = transactions['transactions'];
+                this.calculateAmount();
             }
         });
+    }
+
+    calculateAmount() {
+        for (let transaction of this.transactions) {
+            this.totalCreditAmount += transaction['amount'];
+        }
     }
 
 }

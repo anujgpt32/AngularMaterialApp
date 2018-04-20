@@ -10,7 +10,8 @@ import { Component, OnInit } from '@angular/core';
 export class DebitTransactionsComponent implements OnInit {
 
     username:string;
-    transactions:object;
+    transactions = [];
+    totalDebitedAmount = 0.0;
 
     constructor(private transactionService: TransactionService,
         private localStorage: LocalStorage) {
@@ -32,8 +33,16 @@ export class DebitTransactionsComponent implements OnInit {
         this.transactionService.getDebitTransactions(data).subscribe(transactions => {
             if (transactions['success'] == 1) {
                 this.transactions = transactions['transactions'];
+                this.calculateAmount();
             }
         });
+    }
+
+    calculateAmount() {
+        for (let transaction of this.transactions) {
+            this.totalDebitedAmount += transaction['amount'];
+        }
+        console.log(this.totalDebitedAmount);
     }
 
 }
