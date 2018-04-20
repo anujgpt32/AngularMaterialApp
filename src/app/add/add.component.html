@@ -1,19 +1,19 @@
 <div class="container">
-  <mat-card style="margin-top: 10px">
-    <p align="center">
-      <mat-form-field>
-        <input matInput disabled [(ngModel)]="username" placeholder="Username">
-      </mat-form-field>
-      <br>
-      <mat-form-field>
-        <input matInput placeholder="Password" [(ngModel)]="password" type="password" required>
-      </mat-form-field>
-      <br>
-      <mat-form-field>
-        <input matInput placeholder="Amount ($)" [(ngModel)]="amount" type="text" required>
-      </mat-form-field>
-      <br>
-      <button mat-raised-button color="accent" style="margin-top: 10px" (click)="add()">Add</button>
-    </p>
-  </mat-card>
+    <mat-card style="margin-top: 10px">
+        <p align="center">
+            <mat-form-field>
+                <input matInput disabled [(ngModel)]="username" placeholder="Username">
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+                <input matInput placeholder="Password" [(ngModel)]="password" type="password" required>
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+                <input matInput placeholder="Amount ($)" [(ngModel)]="amount" type="text" required>
+            </mat-form-field>
+            <br>
+            <button mat-raised-button color="accent" style="margin-top: 10px" (click)="add()">Add</button>
+        </p>
+    </mat-card>
 </div>

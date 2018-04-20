@@ -1,27 +1,27 @@
 <div class="container">
-  <mat-card style="margin-top: 10px">
-    <p align="center">
-      <mat-form-field>
-        <input matInput disabled [(ngModel)]="from" placeholder="From">
-      </mat-form-field>
-      <br>
-      <mat-form-field>
-        <input matInput placeholder="Password" [(ngModel)]="password" type="password" required>
-      </mat-form-field>
-      <br>
-      <mat-form-field>
-        <input matInput [(ngModel)]="to" placeholder="To" required>
-      </mat-form-field>
-      <br>
-      <mat-form-field>
-        <input matInput placeholder="Amount ($)" [(ngModel)]="amount" type="text" required>
-      </mat-form-field>
-      <br>
-      <mat-form-field class="example-full-width">
-        <textarea matInput placeholder="Description" [(ngModel)]="description" required></textarea>
-      </mat-form-field>
-      <br>
-      <button mat-raised-button color="accent" style="margin-top: 10px" (click)="pay()">Pay</button>
-    </p>
-  </mat-card>
+    <mat-card style="margin-top: 10px">
+        <p align="center">
+            <mat-form-field>
+                <input matInput disabled [(ngModel)]="from" placeholder="From">
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+                <input matInput placeholder="Password" [(ngModel)]="password" type="password" required>
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+                <input matInput [(ngModel)]="to" placeholder="To" required>
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+                <input matInput placeholder="Amount ($)" [(ngModel)]="amount" type="text" required>
+            </mat-form-field>
+            <br>
+            <mat-form-field class="example-full-width">
+                <textarea matInput placeholder="Description" [(ngModel)]="description" required></textarea>
+            </mat-form-field>
+            <br>
+            <button mat-raised-button color="accent" style="margin-top: 10px" (click)="pay()">Pay</button>
+        </p>
+    </mat-card>
 </div>

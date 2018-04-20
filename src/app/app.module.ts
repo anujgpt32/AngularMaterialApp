@@ -1,19 +1,13 @@
+import { MatSnackBar } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms'
-
-import { MatInputModule, MatCardModule, MatCheckboxModule, 
-        MatTabsModule, MatButtonModule, MatSnackBar, 
-        MatSnackBarModule, MatToolbarModule
-        , MatMenuModule, MatSortModule, 
-        MatExpansionModule, MatPaginatorModule, 
-        MatTableModule, MatSidenavModule, MatListModule,
-        MatIconModule, MatDialogModule } from '@angular/material'
         
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { LocalStorageModule } from '@ngx-pwa/local-storage';
+import { MaterialModule } from './material/material.module';
  
 import { AppComponent } from './app.component';
 import { AuthComponent } from './auth/auth.component';
@@ -118,30 +112,15 @@ let routes:Routes = [
         BrowserModule,
         BrowserAnimationsModule,
         FormsModule,
-        MatCheckboxModule,
-        MatCardModule,
-        MatInputModule,
-        MatTabsModule,
-        MatToolbarModule,
-        MatButtonModule,
-        MatSnackBarModule,
-        MatMenuModule,
         HttpClientModule,
         RouterModule.forRoot(routes),
         LocalStorageModule,
-        MatSortModule,
-        MatExpansionModule,
-        MatPaginatorModule,
-        MatTableModule,
-        MatSidenavModule,
-        MatListModule,
-        MatIconModule,
-        MatDialogModule
+        MaterialModule
     ],
     entryComponents:[
         ChangePasswordDialogComponent, DeleteAccountDialogComponent
     ],
-    providers: [HttpClient, AuthService, TransactionService, MatSnackBar],
+    providers: [HttpClient, AuthService, TransactionService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

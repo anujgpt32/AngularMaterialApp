@@ -2,6 +2,7 @@
     width: 60%;
 }
 .mat-card {
-    width:60%;
-    margin-top: 1%
+    display: inline-block;
+    margin-top: 1%;
+    width: 75%
 }
